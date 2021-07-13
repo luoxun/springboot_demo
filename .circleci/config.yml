@@ -26,7 +26,8 @@ jobs:
 #      - run:
 #          name: mvn package Artifacts
 #          command: mvn package
-
+      - setup_remote_docker:
+        version: 19.03.13
 #      - run:
 #          name: Creating Dummy Artifacts
 #          command: |
