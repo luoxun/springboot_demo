@@ -42,7 +42,7 @@ jobs:
           name: scp to
           command: |
                 cat ~/.ssh/id_rsa.pub
-                scp -oStrictHostKeyChecking=no -r ./target/demo-0.0.1-SNAPSHOT.jar ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_DIR}/.
+                scp -o StrictHostKeyChecking=no -r ./target/ ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_DIR}/.
 
 #      - store_artifacts:
 #          path: /tmp/artifacts
