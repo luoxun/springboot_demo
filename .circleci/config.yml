@@ -63,6 +63,8 @@ jobs:
           name: docker build -t company/app:$CIRCLE_BRANCH .
           command: |
             docker -v
+            pwd
+            date
 #            sudo docker build -t luoxun/sp1 .
 
 
