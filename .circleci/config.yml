@@ -15,17 +15,17 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       # Use mvn clean and package as the standard maven build phase
-      - run:
-          name: Build
-          command: mvn -B -DskipTests clean package
-      # Then run your tests!
 #      - run:
-#          name: Test
-#          command: mvn test
-
-      - run:
-          name: mvn package Artifacts
-          command: mvn package
+#          name: Build
+#          command: mvn -B -DskipTests clean package
+#      # Then run your tests!
+##      - run:
+##          name: Test
+##          command: mvn test
+#
+#      - run:
+#          name: mvn package Artifacts
+#          command: mvn package
 
 #      - run:
 #          name: Creating Dummy Artifacts
@@ -34,22 +34,23 @@ jobs:
 #            mkdir /tmp/artifacts;
 #            echo "my artifact files in a dir" > /tmp/artifacts/art-2;
 
-      - store_artifacts:
-          path: ./target/demo-0.0.1-SNAPSHOT.jar
-          destination: demo-0.0.1-SNAPSHOT.jar
+#      - store_artifacts:
+#          path: ./target/demo-0.0.1-SNAPSHOT.jar
+#          destination: demo-0.0.1-SNAPSHOT.jar
 
     # build the application image
       - run:
           name: docker build -t company/app:$CIRCLE_BRANCH .
           command: |
-            sudo docker -v
+            sudo docker -v |
+            sudo docker build -t company/app:$CIRCLE_BRANCH .
 
 
-      - run:
-          name: scp to
-          command: |
-                cat ~/.ssh/id_rsa.pub
-                scp -o StrictHostKeyChecking=no -r ./target/ ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_DIR}/.
+#      - run:
+#          name: scp to
+#          command: |
+#                cat ~/.ssh/id_rsa.pub
+#                scp -o StrictHostKeyChecking=no -r ./target/ ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_DIR}/.
 
 #      - store_artifacts:
 #          path: /tmp/artifacts
