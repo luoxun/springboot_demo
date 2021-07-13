@@ -38,6 +38,12 @@ jobs:
           path: ./target/demo-0.0.1-SNAPSHOT.jar
           destination: demo-0.0.1-SNAPSHOT.jar
 
+    # build the application image
+      - run:
+          name: docker build -t company/app:$CIRCLE_BRANCH .
+          command: |
+                  docker build -t luoxun/app:$CIRCLE_BRANCH .
+
       - run:
           name: scp to
           command: |
