@@ -10,10 +10,8 @@ jobs:
     # Be sure to update the Docker image tag below to openjdk version of your application.
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/openjdk
     docker:
-      - image: cimg/openjdk:11.0
+       - image: cimg/openjdk:11.0
       
-    executor: docker/docker
-
     steps:
       # Checkout the code as the first step.
       - checkout
@@ -44,17 +42,17 @@ jobs:
 
     # build the application image
 
-      - docker/check
+   #   - docker/check
 
-      - docker/build:
-          image: my_repo/orb-test
+      # - docker/build:
+      #     image: my_repo/orb-test
 
-#      - run:
-#          name: docker build -t company/app:$CIRCLE_BRANCH .
-#          command: |
-#            cat /home/circleci/.docker/config.json
-#            docker -v
-#            sudo docker build -t luoxun/sp1 .
+      - run:
+         name: docker build -t company/app:$CIRCLE_BRANCH .
+         command: |
+           cat /home/circleci/.docker/config.json
+           docker -v
+           sudo docker build -t luoxun/sp1 .
 
 
 #      - run:
