@@ -42,8 +42,8 @@ jobs:
       - run:
           name: docker build -t company/app:$CIRCLE_BRANCH .
           command: |
-            sudo docker -v
-            docker build -t company/app:$CIRCLE_BRANCH .
+            docker -v
+            docker build -t ariv3ra/$IMAGE_NAME:$TAG .
 
 
 #      - run:
