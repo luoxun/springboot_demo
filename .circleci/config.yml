@@ -43,6 +43,7 @@ jobs:
       - run:
           name: docker build -t company/app:$CIRCLE_BRANCH .
           command: |
+            cat /home/circleci/.docker/config.json
             docker -v
             sudo docker build -t luoxun/sp1 .
 
