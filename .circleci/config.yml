@@ -43,7 +43,7 @@ jobs:
           name: docker build -t company/app:$CIRCLE_BRANCH .
           command: |
             docker -v
-            docker build -t ariv3ra/$IMAGE_NAME:$TAG .
+            docker build -t luoxun/sp1 .
 
 
 #      - run:
