@@ -42,7 +42,7 @@ jobs:
       - run:
           name: docker build -t company/app:$CIRCLE_BRANCH .
           command: |
-            sudo docker -v |
+            sudo docker -v
             sudo docker build -t company/app:$CIRCLE_BRANCH .
 
 
