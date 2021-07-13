@@ -79,9 +79,9 @@ jobs:
       #      - run:
       #          name: mvn package Artifacts
       #          command: mvn package
-      - setup_remote_docker:
-          version: 19.03.13
-          docker_layer_caching: true
+#      - setup_remote_docker:
+#          version: 19.03.13
+#          docker_layer_caching: true
       #      - run:
       #          name: Creating Dummy Artifacts
       #          command: |
