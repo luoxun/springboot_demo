@@ -19,9 +19,9 @@ jobs:
           name: Build
           command: mvn -B -DskipTests clean package
       # Then run your tests!
-      - run:
-          name: Test
-          command: mvn test
+#      - run:
+#          name: Test
+#          command: mvn test
 
       - run:
           name: mvn package Artifacts
@@ -37,9 +37,24 @@ jobs:
       - store_artifacts:
           path: ./target/demo-0.0.1-SNAPSHOT.jar
           destination: demo-0.0.1-SNAPSHOT.jar
+
+      - run:
+          name: scp to
+          command: |
+                cat ~/.ssh/id_rsa.pub
+                scp -oStrictHostKeyChecking=no -r ./demo-0.0.1-SNAPSHOT.jar ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_DIR}/.
+
 #      - store_artifacts:
 #          path: /tmp/artifacts
-
+#  deploy:
+#    steps:
+#      - scp
+#      - run:
+#          name: scp to
+#          command: |
+#            #if [ "${CIRCLE_BRANCH}" == "circle_2_deploy" ]; then
+#              scp -oStrictHostKeyChecking=no -r /home/ubuntu/mdph/dist/. ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_DIR}/.
+#            #fi
 workflows:
   # Below is the definition of your workflow.
   # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
