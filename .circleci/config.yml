@@ -56,6 +56,8 @@ jobs:
 
       # build the application image
   docker-build:
+
+
     # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
     # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # Be sure to update the Docker image tag below to openjdk version of your application.
@@ -66,6 +68,8 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       - run:
+          requires:
+              - build-and-test
           name: docker build -t company/app:$CIRCLE_BRANCH .
           command: |
             docker -v
@@ -107,6 +111,4 @@ workflows:
   sample:
     jobs:
       - build-and-test
-  sample2:
-    jobs:
       - docker-build      
