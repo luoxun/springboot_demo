@@ -111,4 +111,6 @@ workflows:
   sample:
     jobs:
       - build-and-test
-      - docker-build      
+      - docker-build:
+          requires:
+          - build-and-test    
