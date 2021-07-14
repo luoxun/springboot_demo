@@ -55,7 +55,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - target
+            - ./target/
       # build the application image
   docker-build:
 
