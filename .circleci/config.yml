@@ -38,33 +38,48 @@ jobs:
       ##          name: Test
       ##          command: mvn test
       #
-      #      - run:
-      #          name: mvn package Artifacts
-      #          command: mvn package
+      - run:
+          name: mvn package Artifacts
+          command: mvn package
 #      - setup_remote_docker:
 #          version: 19.03.13
 #          docker_layer_caching: true
-      #      - run:
-      #          name: Creating Dummy Artifacts
-      #          command: |
-      #            echo "my artifact file" > /tmp/art-1;
-      #            mkdir /tmp/artifacts;
-      #            echo "my artifact files in a dir" > /tmp/artifacts/art-2;
+      # - run:
+      #     name: Creating Dummy Artifacts
+      #     command: |
+      #       echo "my artifact file" > /tmp/art-1;
+      #       mkdir /tmp/artifacts;
+      #       echo "my artifact files in a dir" > /tmp/artifacts/art-2;
 
-      #      - store_artifacts:
-      #          path: ./target/demo-0.0.1-SNAPSHOT.jar
-      #          destination: demo-0.0.1-SNAPSHOT.jar
+      - store_artifacts:
+          path: ./target/demo-0.0.1-SNAPSHOT.jar
+          destination: demo-0.0.1-SNAPSHOT.jar
 
       # build the application image
+  docker-build:
+    # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
+    # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # Be sure to update the Docker image tag below to openjdk version of your application.
+    # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/openjdk
+    machine: true
 
-
-
+    steps:
+      # Checkout the code as the first step.
+      - checkout
       - run:
           name: docker build -t company/app:$CIRCLE_BRANCH .
           command: |
             docker -v
             pwd
-            date
+            date   
+            docker build -t luoxun/sp1 .   
+
+      # - run:
+      #     name: docker build -t company/app:$CIRCLE_BRANCH .
+      #     command: |
+      #       docker -v
+      #       pwd
+      #       date
 #            sudo docker build -t luoxun/sp1 .
 
 
@@ -93,3 +108,4 @@ workflows:
   sample:
     jobs:
       - build-and-test
+      - docker-build
