@@ -39,7 +39,8 @@ jobs:
       #
       - run:
           name: mvn package Artifacts
-          command: mvn package
+          #command: mvn package
+          command: touch luoxun
 #      - setup_remote_docker:
 #          version: 19.03.13
 #          docker_layer_caching: true
@@ -49,13 +50,13 @@ jobs:
             export
             env
 
-      - store_artifacts:
-          path: ./target/demo-0.0.1-SNAPSHOT.jar
-          destination: demo-0.0.1-SNAPSHOT.jar
+      # - store_artifacts:
+      #     path: ./target/demo-0.0.1-SNAPSHOT.jar
+      #     destination: demo-0.0.1-SNAPSHOT.jar
       - persist_to_workspace:
           root: .
           paths:
-            - ./target/
+            - ./
       # build the application image
   docker-build:
 
@@ -68,7 +69,7 @@ jobs:
 
     steps:
       # Checkout the code as the first step.
-      - checkout
+      #- checkout
       - run:
           name: docker build -t company/app:$CIRCLE_BRANCH .
           command: |
