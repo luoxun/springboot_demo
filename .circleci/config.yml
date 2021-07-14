@@ -53,7 +53,10 @@ jobs:
       - store_artifacts:
           path: ./target/demo-0.0.1-SNAPSHOT.jar
           destination: demo-0.0.1-SNAPSHOT.jar
-
+      - persist_to_workspace:
+          root: .
+          paths:
+            - target
       # build the application image
   docker-build:
 
@@ -68,8 +71,6 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       - run:
-          requires:
-              - build-and-test
           name: docker build -t company/app:$CIRCLE_BRANCH .
           command: |
             docker -v
