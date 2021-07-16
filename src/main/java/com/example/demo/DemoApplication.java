@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,13 +41,13 @@ public class DemoApplication {
 	}
 
 
-	@RequestMapping(value = "/google",method = RequestMethod.GET)
+	@RequestMapping(value = "/",method = RequestMethod.GET)
 	public String hello(){
 
-		System.out.println(test.getAge());
-		System.out.println("/***************************************************/");
-		log.info("-------");
-		return  "dd"; //usersMapper.getAll();
+//		System.out.println(test.getAge());
+//		System.out.println("/***************************************************/");
+//		log.info("-------");
+		return  "{\"code\":200,\"message\":\"success\"}";
 		//return "google";
 	}
 	@RequestMapping(value = "/google2",method = RequestMethod.POST)
