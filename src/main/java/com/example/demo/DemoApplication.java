@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
 @SpringBootApplication
 @RestController
 @ComponentScan(value = "com.example")
@@ -28,31 +26,38 @@ import java.util.List;
 @Slf4j
 public class DemoApplication {
 
-//    @Autowired
-//    private UsersMapper usersMapper;
+	// @Autowired
+	// private UsersMapper usersMapper;
 
 	@Autowired
-	private  Test test;
-
+	private Test test;
 
 	public static void main(String[] args) {
 
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String hello() {
 
-	@RequestMapping(value = "/",method = RequestMethod.GET)
-	public String hello(){
+		// System.out.println(test.getAge());
+		// System.out.println("/***************************************************/");
+		// log.info("-------");
 
-//		System.out.println(test.getAge());
-//		System.out.println("/***************************************************/");
-//		log.info("-------");
-		return  "{\"code\":200,\"message\":\"success\"}";
-		//return "google";
+		RunnableDemo r1 = new RunnableDemo("name 1");
+
+		r1.run();
+		RunnableDemo r2 = new RunnableDemo("name 2");
+		r2.run();
+
+		// RunnableDemo::start()
+		return "{\"code\":200,\"message\":\"success\"}";
+
+		// return "google";
 	}
-	@RequestMapping(value = "/google2",method = RequestMethod.POST)
-	public String hellos(){
 
+	@RequestMapping(value = "/google2", method = RequestMethod.POST)
+	public String hellos() {
 
 		return "2";
 	}
