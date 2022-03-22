@@ -41,14 +41,14 @@ public class DemoApplication {
 	public String hello() {
 
 		// System.out.println(test.getAge());
-		// System.out.println("/***************************************************/");
+		System.out.println("/***************************************************/");
 		// log.info("-------");
 
 		RunnableDemo r1 = new RunnableDemo("name 1");
 
-		r1.run();
+		r1.start();
 		RunnableDemo r2 = new RunnableDemo("name 2");
-		r2.run();
+		r2.start();
 
 		// RunnableDemo::start()
 		return "{\"code\":200,\"message\":\"success\"}";
