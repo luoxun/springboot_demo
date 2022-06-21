@@ -93,13 +93,13 @@ jobs:
             docker login -u docker-1626275288306 -p 08e6910c6c8e40c78fdc6c6630ff0553c7284abc turingxun-docker.pkg.coding.net
             docker tag  luoxun/sp1  turingxun-docker.pkg.coding.net/slimphp_wechat/docker/luoxunsp1:latest
             docker push turingxun-docker.pkg.coding.net/slimphp_wechat/docker/luoxunsp1:latest
-      - run:
-           name: Deploy Over SSH
-           command: |
-             ssh $DEPLOY_USER@$DEPLOY_SERVER "
-             sudo docker pull turingxun-docker.pkg.coding.net/slimphp_wechat/docker/luoxunsp1:latest
-             sudo docker-compose  -f /home/ubuntu/dokcer/test/docker-compose.yml  up  -d --scale  springboot=2
-             "
+      # - run:
+      #      name: Deploy Over SSH
+      #      command: |
+      #        ssh $DEPLOY_USER@$DEPLOY_SERVER "
+      #        sudo docker pull turingxun-docker.pkg.coding.net/slimphp_wechat/docker/luoxunsp1:latest
+      #        sudo docker-compose  -f /home/ubuntu/dokcer/test/docker-compose.yml  up  -d --scale  springboot=2
+      #        "
       # - run:
       #     name: docker build -t company/app:$CIRCLE_BRANCH .
       #     command: |
