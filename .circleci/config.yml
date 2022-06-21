@@ -90,14 +90,15 @@ jobs:
             env
             ls -all
             docker build -t luoxun/sp1 . 
+            docker login -u 100000127754 -p luoxun007  ccr.ccs.tencentyun.com
+            docker tag  luoxun/sp1  ccr.ccs.tencentyun.com/xun-demo/springdemo:latest
+            docker push push ccr.ccs.tencentyun.com/xun-demo/springdemo:latest
       # push to coding.net      
       # docker login -u docker-1626275288306 -p 08e6910c6c8e40c78fdc6c6630ff0553c7284abc turingxun-docker.pkg.coding.net
      # docker tag  luoxun/sp1  turingxun-docker.pkg.coding.net/slimphp_wechat/docker/luoxunsp1:latest
       # docker push turingxun-docker.pkg.coding.net/slimphp_wechat/docker/luoxunsp1:latest
 
-          docker login -u 100000127754 -p luoxun007  ccr.ccs.tencentyun.com
-          docker tag  luoxun/sp1  ccr.ccs.tencentyun.com/xun-demo/springdemo:latest
-          docker push push ccr.ccs.tencentyun.com/xun-demo/springdemo:latest
+
 
 
       # - run:
