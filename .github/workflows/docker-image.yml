@@ -25,8 +25,13 @@ jobs:
       with:
         name: Package
         path: target  
-  
-  
+        
+    - name: show
+      run:  ls -all
+
+    - name: show env
+      run:  export
+
     - name: Build	
       uses: qcastel/github-actions-maven/actions/maven@master
       with:
