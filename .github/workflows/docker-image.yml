@@ -27,10 +27,10 @@ jobs:
         path: target  
   
   
-    - name: Build	
-      uses: qcastel/github-actions-maven/actions/maven@master
-      with:
-        maven-args: "clean install"
+#     - name: Build	
+#       uses: qcastel/github-actions-maven/actions/maven@master
+#       with:
+#         maven-args: "clean install"
       
     - name: env
       run: env  
