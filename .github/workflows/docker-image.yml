@@ -13,9 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-#     - uses: actions/checkout@v3
-#     - name: Build the Docker image
-#       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    
+    - uses: actions/checkout@v3
+  
+    - name: Build the Docker image
+      run: ls -all
+    - name: env
+      run: env  
       
     - name: Docker Build Tag Publish
       uses: zenato/docker-action@master
