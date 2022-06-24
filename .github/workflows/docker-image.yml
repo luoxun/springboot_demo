@@ -61,4 +61,4 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           # 重启的脚本，根据自身情况做相应改动，一般要做的是migrate数据库以及重启服务器
           script: |
-            sudo whoami
+            sudo kubectl set image  deployments/springdemo-deployment springdemo=ccr.ccs.tencentyun.com/xun-demo/springdemo:v.0.${{ github.run_number }}
