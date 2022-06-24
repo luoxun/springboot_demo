@@ -49,40 +49,14 @@ jobs:
           password: luoxun007
           repository: xun-demo/springdemo
           registry: ccr.ccs.tencentyun.com
-          tag: ${{ env.GITHUB_RUN_NUMBER }}
+          tag: $GITHUB_RUN_NUMBER
 
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
       with:
-          host: 1.14.46.223  # 下面三个配置与上一步类似
+          host: ${{ secrets.REMOTE_HOST }}  # 下面三个配置与上一步类似
           username: ubuntu
-          key: "-----BEGIN RSA PRIVATE KEY-----
-MIIEowIBAAKCAQEAy+ZKdSH/Di07iRgIzfHYp7ikDDf64rdrta9qgtL63VqO46zw
-AdCTwyRIml5FO849XBsZCnRXBDnO2pEBvevUZXlqdqwSJzQ8/LhDk6ZRsHnSaLGx
-xIsOie8W/oi90XrT9MfYIJcAdPIs9sOizjPwg7nQnkkOULXtEEXjS8LoUCOU6Z6p
-HH1Ni9NTkiR0B940sMY7Bmy4oWTHmYAga50mBOlQ9NXceZhATyRTgNoh9I58fe/s
-wCAItlkOEwkVjTGbhqqBZzOrPJMZQd8saZGbvPlbbIaAp0lnpHbfCdpP5pbyxn65
-/W0Pwp5zSrpGz3TUFzl6WFaUr3XyIEtTTlRFqwIDAQABAoIBAQCC5FASB4PrPuBE
-LrigNEvHx4EQEvOsjODJHlW6q+O9K4Ak6gSctZ/Vmro81p2NOeUr9n1Jt8uQe+et
-aX77w6NyjNHqYqW4oxEvjr5az18Lcfi/mqqqqDXqGCDjvzZTfo0ISy4UJbt2V2zD
-8GzYAIG6nhMtOWrGJzOKycKTBQkLP9aoxfT/IL7nlez+aG1Clh+Rur5OCkkRoNaw
-YkGwZL6WqvboIzUr4odOWfokAs+lrHSkALWuH0v2tPRvWUtSj+EsZ0P4XYU0SBOp
-nH8A2D98CrqQoihV0RAnoJKYrXf8RY3Wb8HdZCsATWoYA1OHpxllXXccwC64phkS
-hAMfx4hxAoGBAO4NRJRaIe7JCQ6GYUZtN0wCwFnUX0wZhHBIBUjEOgMcLwJFaOLp
-GIIB1vUu00EAKYY+tyj8q2DYcTTubQkg0EcE/NSM/sGWDqFTjAJ0pRk6QXFaC6PB
-g6WdRjNxdGNliGGCkoF1vEj2milNgmAqI1vcV6uhsc9zdA/vx+fyg6NJAoGBANtF
-1jvXozcJTCfS8EaWvjzXdadodeI22YSWxo6YDn6q62dBc5+zibi160g4TlrKa3Vu
-jGFEdPDycu5cAKWedUc3Hejs3cKzrv8du1QUrgDQbyJ3HuIIjTkKGbK/62SqTbK5
-/dQupKWYNolAdFuUlj3RVuQmQISbbsNm6Y0n3q1TAoGAE1AmQTbyy9Gpl3EVkUYp
-F1Sd0Gvnc2Aam5VsQFQTNM9jjPaepNIud9W4X9n1r69YrxiFeaDOMqQ8wwOY+wWb
-gDeKX6A0xvXqp/IESOq3vk04o/6fNSDtElGpMWFCBRJmtyqFwlUP+odvSGyOaEji
-53//6N/Mcj02rFhSyqGlRmkCgYAGCSoYg5sOjMb34aqThtq9ugCXFx0HmRLrv2q/
-yhe8DOBl+zs/jiWgXAGZ/1LI1QGYPe7HTqcZatMXFJk/9dismSvNmZeRIHkUtLDP
-Y7JWe2ZTwIutFScuBsUmUnocT0PMQ6plCNOna0U1Cf0p+DEaioSlyxfDjrPB1Tdg
-l1Rd2QKBgFqpjAGx4yncI+wNxRqZuzvv6BlLTKWZMqU8A4A59FYknqS7yMRsLWRm
-pXapHGhnIGYvj6B1t0qiTqjMBwdOoxlMnVVSEAaxNA81OR6jbhqkBQWq99K8jWly
-7wLB9J4fKKHYtJEhg1VU3USUea8CM0TXl+eMuOzJ6AY8edE7zBo7
------END RSA PRIVATE KEY-----"
+          key: ${{ secrets.SERVER_SSH_KEY }}
           # 重启的脚本，根据自身情况做相应改动，一般要做的是migrate数据库以及重启服务器
           script: |
             sudo whoami
