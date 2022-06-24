@@ -51,7 +51,7 @@ public class DemoApplication {
 		r2.start();
 
 		// RunnableDemo::start()
-		return "{\"code\":200,\"message\":\"success version\"}";
+		return "{\"code\":200,\"message\":\"success version2\"}";
 
 		// return "google";
 	}
