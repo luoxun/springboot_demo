@@ -27,8 +27,7 @@ jobs:
         path: target  
 
   
-  
-#     - name: Build	
+
 #       uses: qcastel/github-actions-maven/actions/maven@master
 #       with:
 #         maven-args: "clean install"
@@ -50,4 +49,14 @@ jobs:
           password: luoxun007
           repository: xun-demo/springdemo
           registry: ccr.ccs.tencentyun.com
-          tag: 1.0
+          tag: ${{GITHUB_RUN_NUMBER}}
+
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+          host: ${{ secrets.REMOTE_HOST }}  # 下面三个配置与上一步类似
+          username: ubuntu
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          # 重启的脚本，根据自身情况做相应改动，一般要做的是migrate数据库以及重启服务器
+          script: |
+            sudo whoami
