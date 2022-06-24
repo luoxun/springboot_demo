@@ -9,6 +9,8 @@ on:
 jobs:
 
   build:
+    env:
+      input: $GITHUB_RUN_NUMBER
 
     runs-on: ubuntu-latest
 
@@ -49,7 +51,7 @@ jobs:
           password: luoxun007
           repository: xun-demo/springdemo
           registry: ccr.ccs.tencentyun.com
-          tag: $GITHUB_RUN_NUMBER
+          tag: ${env.input}
 
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
