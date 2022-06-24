@@ -51,7 +51,7 @@ jobs:
           password: luoxun007
           repository: xun-demo/springdemo
           registry: ccr.ccs.tencentyun.com
-          tag: {{v.0.$GITHUB_RUN_NUMBER}}
+          tag: ${{v.0.$GITHUB_RUN_NUMBER}}
 
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
