@@ -37,7 +37,7 @@ jobs:
       run:  ls -all
 
     - name: show env
-      run:  export
+      run:  echo $GITHUB_RUN_NUMBER
       
     - name: env
       run: env  
